@@ -13,19 +13,19 @@
     <section class="formBox" ng-controller="TodoController as $ctrl">
         <p class="listTitle">TODO List</p>
         <p class="listSub">A place to store things you have to do!</p>
-        <input class="filter" type="text" placeholder="Filter list here">
+        <input class="filter" type="text" placeholder="Filter list here" ng-model="$ctrl.filter">
         <ol>
-            <li ng-repeat="todo in $ctrl.tasks">
+            <li ng-repeat="todo in $ctrl.tasks | filter:$ctrl.filter">
                 <!-- ng-if=todo.completed would hide all your complete buttons on your completed:false -->
                 <!-- however, we want to hide the buttons if they are completed (which is true), so you want to do the opposite !todo.completed -->
                 <div class="buttonAndTask">
                 <span>{{$index + 1}}</span>
-                <button class="completeButton" ng-if="!todo.completed">Complete</button>
+                <button class="completeButton" ng-if="!todo.completed" ng-click="$ctrl.completeTask($index)">Complete</button>
                 <!--Task Name-->
                 <!-- ng-class= "{add class name you want to add: reference what you want to tag it to}" -->
                 <p ng-class="{completed: todo.completed}">{{ todo.task }}</p>
                 </div>
-                <img src="close icon.png">
+                <img src="close icon.png" ng-click="$ctrl.removeTask($index)">
             </li>
         </ol>
         <!-- you need to create a new form to add ng-submit to -->

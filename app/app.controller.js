@@ -9,15 +9,15 @@ function TodoController() {
     ];
     vm.add = function(newTask) {
         vm.tasks.push(angular.copy(newTask));
+        vm.newTask = {};
     }
-
-
-    // vm.add = function(newContact){
-    //     vm.contacts.push(angular.copy(newContact)); 
-    //     console.log(newContact);
-    //     vm.newContact = {};
-    // };
-   
+    vm.removeTask = function(index) {
+        vm.tasks.splice(index, 1);
+    }
+    vm.completeTask = function(index) {
+        let i = index;
+        vm.tasks[i].completed = true;
+    } 
 }
 
 
