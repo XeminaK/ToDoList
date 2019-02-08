@@ -28,8 +28,12 @@
                 <img src="close icon.png">
             </li>
         </ol>
-        <input type="text" placeholder="Add your to-do" class="addList">
-        <button class="addButton">Add</button>
+        <!-- you need to create a new form to add ng-submit to -->
+        <form ng-submit="$ctrl.add($ctrl.newTask)"> <!--$ctrl.add is referenicng the add function, $ctrl.newTask is referencing the new array you created-->
+        <!--make sure you add a .task in the mg-model, because it is going to go where you referenced .task before-->
+        <input type="text" placeholder="Add your to-do" class="addList" ng-model="$ctrl.newTask.task"> 
+        <button class="addButton" ng-submt="$ctrl.add($ctrl.newTask)">Add</button>
+        </form>
     </section>
     
 
